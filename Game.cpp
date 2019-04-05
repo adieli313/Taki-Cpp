@@ -100,15 +100,18 @@ int Game::nextPlayer(){
 
         case sign::CD : {
             clockwise = !clockwise ;
+            nextTurn();
             break;
         }
 
         case sign::STOP : {
             nextTurn();
+            nextTurn();
             break;
         }
+        default: nextTurn();
     }
-    nextTurn();
+
  }
 
 
