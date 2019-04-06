@@ -11,7 +11,7 @@ Player::Player(string name , int num_of_cards){
 
     for (int j = 0; j < num_of_cards; j++) {
         Card* c = new Card;
-        *c = Card::generate_card();
+        *(c) = (Card::generate_card());
         plCards.push_back(c);
     }
 }
@@ -70,12 +70,10 @@ bool Player::play(Card& current) {
 
 void Player::turnStat(const Card& current){
     cout << "Current: " << current << endl;
-    cout << name << " , your turn... " <<endl;
-    cout << "Your cards: ";
+    cout << name << " , your turn -" <<endl;
+    cout << "Your cards:";
     for (int i = 0; i < plCards.size(); ++i) {
-        cout << "   (" << i+1 << ") " << *(plCards.at(i)) ;
+        cout << " ("<< i+1 << ")" << *(plCards.at(i)) ;
     }
-    cout << endl<< endl;
-    cout << "----------------------";
     cout << endl<< endl;
 }

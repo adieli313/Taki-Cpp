@@ -45,7 +45,7 @@ void Game::start()
         currPlayer = players[currPlIndex];
         if((*currPlayer).play(*current)){
             if(isGameOver()){
-                cout << endl << "*****     "<< (*currPlayer).getName() << " WINS!!! " << "     *****" ;
+                cout << endl <<(*currPlayer).getName() << " WINS!";
                 return;
             }
 

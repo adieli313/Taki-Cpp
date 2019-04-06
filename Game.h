@@ -34,10 +34,6 @@ public:
 	Game(); // constructor;
 	~Game(); // destructor;
 	void start(); // start the game;
-
-
-	//int operator ++(int nb);
-	//int operator --(int nb);
 };
 #endif
 
