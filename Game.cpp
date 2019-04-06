@@ -5,7 +5,7 @@
 
 using namespace std;
 
- Game::Game(){
+Game::Game(){
     numOfPlayers = 0;
     numOfCards = 0;
     clockwise = true;
@@ -37,7 +37,7 @@ void Game::start()
     }
 
 
-    currPlIndex = rand() % getNumOfPlayers();
+    currPlIndex = 0; // rand() % getNumOfPlayers();
 
 
 
@@ -61,15 +61,18 @@ void Game::initialization()
 
     cout << "How many players?" << endl;
     cin >>  numOfPlayers;
+    if(cin.fail() || numOfPlayers <= 0) throw string("ilegal number of players");
+
     cout << "How many cards?" << endl;
     cin >>  numOfCards;
+    if(cin.fail() || numOfCards <= 0) throw string("ilegal number of cards");
+
 
     for (int i = 0; i < numOfPlayers; i++)
     {
         cout << "Player number " << i + 1 << " name?" << endl;
         string name;
         cin >>  name;
-        vector<Card> cards;
         players.push_back(new Player(name, numOfCards));
 
     }
@@ -85,12 +88,12 @@ int Game::getNumOfPlayers(){
 
 
 void Game::nextTurn(){
-     if(clockwise) {
+    if(clockwise) {
 
-         currPlIndex = (currPlIndex+1) % getNumOfPlayers() ;
-     }
-     else currPlIndex =  (currPlIndex-1) % getNumOfPlayers() ;
- }
+        currPlIndex = (currPlIndex+1) % getNumOfPlayers() ;
+    }
+    else currPlIndex =  (currPlIndex-1) % getNumOfPlayers() ;
+}
 int Game::nextPlayer(){
 
     sign currCardSign = (*current).get_sign();
@@ -112,33 +115,9 @@ int Game::nextPlayer(){
         default: nextTurn();
     }
 
- }
+}
 
 
 bool Game::isGameOver(){
-     return (*currPlayer).isEmpty();
- }
-//int Game::operator ++(int nb)
-//{
-//    if (nb == this->getPlayers().size())
-//    {
-//        nb = 0;
-//    }
-//    else
-//    {
-//        nb++;
-//    }
-//}
-//
-//int Game::operator --(int nb)
-//{
-//    if (nb == 0)
-//    {
-//        nb = this->getPlayers().size() - 1;
-//    }
-//    else
-//    {
-//        nb--;
-//    }
-//}
-
+    return (*currPlayer).isEmpty();
+}

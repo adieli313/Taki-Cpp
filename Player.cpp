@@ -11,7 +11,7 @@ Player::Player(string name , int num_of_cards){
 
     for (int j = 0; j < num_of_cards; j++) {
         Card* c = new Card;
-         *c = Card::generate_card();
+        *c = Card::generate_card();
         plCards.push_back(c);
     }
 }
